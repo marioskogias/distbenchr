@@ -8,6 +8,6 @@ setup(name='distbenchr',
         license='MIT',
         packages=['distbenchr'],
         install_requires=[
-            'fabric'
+            'fabric<2'
         ],
         zip_safe=False)
