@@ -47,7 +47,7 @@ class Monitor(object):
             task_name = kwargs['task_name']
             kwargs.pop("task_name")
         str_kwargs_l = map(f, kwargs.items())
-        fab_args = ",".join(str_args_l+str_kwargs_l)
+        fab_args = ",".join(list(str_args_l) + list(str_kwargs_l))
         if fab_args:
             fmt_arg = "{}:{}".format(fn._original, fab_args)
         else:
@@ -77,7 +77,7 @@ class Monitor(object):
                     del self.handlers[pid]
                     continue
                 else:
-                    print "Status received: {}".format(status)
+                    print("Status received: {}".format(status))
                     self.handlers.pop(pid)
                     self.killall()
                     break
@@ -85,4 +85,4 @@ class Monitor(object):
                 self.wait_pids.remove(pid)
                 del self.handlers[pid]
             else:
-                print "Warning: Process terminated normally - no wait"
+                print("Warning: Process terminated normally - no wait")
